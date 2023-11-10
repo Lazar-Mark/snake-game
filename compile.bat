@@ -1,0 +1,1 @@
+gcc *.c -o snake.exe -I.\
