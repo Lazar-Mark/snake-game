@@ -1,8 +1,8 @@
-    #include "header.h"
+ #include "header.h"
     Snake* snake;
-    HANDLE console;
+
     void setup(void){
-        console=GetStdHandle(STD_INPUT_HANDLE);
+
         borderDraw();
         snake = calloc(1,sizeof(Snake));
         snake->c='#';
@@ -14,11 +14,12 @@
 
     void loop(void){
         INPUT_RECORD slovo;
+        HANDLE console = GetStdHandle(STD_INPUT_HANDLE);
         int broj;
         char c='d';
         while(1){
 
-                ReadConsoleInput(console,&slovo,1,(LPDWORD)&broj);
+                PeekConsoleInput(console,&slovo,1,(LPDWORD)&broj);
 
                 c= slovo.Event.KeyEvent.uChar.AsciiChar;
                 FlushConsoleInputBuffer(console);
@@ -41,6 +42,7 @@
                 case 'd':
                     snake->x++;
                     break;
+
                 default:
                     break;
                 }

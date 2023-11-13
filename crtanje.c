@@ -1,5 +1,6 @@
 #include "header.h"
 //map border
+
 void borderDraw(void){
     int n=50;
 
@@ -41,7 +42,11 @@ void borderDraw(void){
 
 }
 void snakeDraw(Snake* snake){
-
+    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD pos;
+    pos.X=snake->x;
+    pos.Y=snake->y;
+    SetConsoleCursorPosition(console,pos);
     printf("%c",snake->c);
 
 }

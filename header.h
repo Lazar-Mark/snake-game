@@ -24,8 +24,6 @@ typedef struct{
 
 
 }Snake;
-
-extern HANDLE console;
 void setup(void);
 void loop(void);
 void borderDraw(void);
