@@ -5,25 +5,33 @@
 #include <string.h>
 #include <stdlib.h>
 #include <windows.h>
-
-
-
+#include <time.h>
 typedef struct{
 
     int x;
     int y;
 
+}Position;
+typedef struct{
+
+   Position pos;
+   char c;
 
 }Food;
 typedef struct{
 
-    int y;
-    int x;
-    char c;
-    int size;
+   Position pos;
+   Position prev;
+   char c;
+   int size;
 
 
 }Snake;
+extern  Food** food;
+void initFood();
+void initSnake();
+Food* createFood();
+void clean();
 void setup(void);
 void loop(void);
 void borderDraw(void);

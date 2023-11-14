@@ -41,12 +41,42 @@ void borderDraw(void){
 
 
 }
+
 void snakeDraw(Snake* snake){
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD pos;
-    pos.X=snake->x;
-    pos.Y=snake->y;
+    pos.X=snake->pos.x;
+    pos.Y=snake->pos.y;
     SetConsoleCursorPosition(console,pos);
     printf("%c",snake->c);
+
+}
+//cleaning
+void clean(){
+
+    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD pos;
+
+
+    CONSOLE_CURSOR_INFO cursor_info;
+    GetConsoleCursorInfo(console, &cursor_info);
+    cursor_info.dwSize = 1;
+    cursor_info.bVisible= FALSE;
+    SetConsoleCursorInfo(console, &cursor_info);
+
+    pos.X=snake->prev.x;
+    pos.Y=snake->prev.y;
+    SetConsoleCursorPosition(console,pos);
+    putchar(' ');
+
+
+}
+void foodDraw(){
+
+    for (int i = 0; i < 1024; i++)
+    {
+
+    }
+
 
 }

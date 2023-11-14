@@ -1,13 +1,17 @@
  #include "header.h"
-    Snake* snake;
+
 
     void setup(void){
-
+        srand(time(NULL));
         borderDraw();
-        snake = calloc(1,sizeof(Snake));
-        snake->c='#';
-        snake->x=10;
-        snake->y=10;
+        initFood();
+        initSnake();
+        CONSOLE_CURSOR_INFO cursor_info;
+        HANDLE console=GetStdHandle(STD_OUTPUT_HANDLE);
+        GetConsoleCursorInfo(console, &cursor_info);
+        cursor_info.dwSize = 1;
+        cursor_info.bVisible= FALSE;
+        SetConsoleCursorInfo(console, &cursor_info);
 
 
     }
@@ -15,6 +19,12 @@
     void loop(void){
         INPUT_RECORD slovo;
         HANDLE console = GetStdHandle(STD_INPUT_HANDLE);
+
+
+
+
+
+
         int broj;
         char c='d';
         while(1){
@@ -26,21 +36,28 @@
 
 
 
-
              switch(c){
 
                 case 'w':
-                    snake->y--;
+                    snake->prev.y=snake->pos.y;
+                    snake->prev.x=snake->pos.x;
+                    snake->pos.y--;
 
                     break;
                 case 'a':
-                    snake->x--;
+                    snake->prev.x=snake->pos.x;
+                    snake->prev.y=snake->pos.y;
+                    snake->pos.x--;
                     break;
                 case 's':
-                    snake->y++;
+                    snake->prev.y=snake->pos.y;
+                    snake->prev.x=snake->pos.x;
+                    snake->pos.y++;
                     break;
                 case 'd':
-                    snake->x++;
+                    snake->prev.x=snake->pos.x;
+                    snake->prev.y=snake->pos.y;
+                    snake->pos.x++;
                     break;
 
                 default:
@@ -48,9 +65,10 @@
                 }
 
 
-
+            clean();
             snakeDraw(snake);
-            Sleep(100);
-
+            Sleep(30);
+             if(snake->pos.x==50 || snake->pos.y==50 || snake->pos.x==0 || snake->pos.y==0)
+             break;
         }
     }
