@@ -4,7 +4,6 @@
     void setup(void){
         srand(time(NULL));
         borderDraw();
-        initFood();
         initSnake();
         CONSOLE_CURSOR_INFO cursor_info;
         HANDLE console=GetStdHandle(STD_OUTPUT_HANDLE);
@@ -12,7 +11,7 @@
         cursor_info.dwSize = 1;
         cursor_info.bVisible= FALSE;
         SetConsoleCursorInfo(console, &cursor_info);
-
+        createFood();
 
     }
 
@@ -65,10 +64,20 @@
                 }
 
 
+            if(onFood()){
+
+                free(food);
+                food=NULL;
+                snake->size++;
+                createFood();
+
+            }
             clean();
+            foodDraw();
             snakeDraw(snake);
             Sleep(30);
-             if(snake->pos.x==50 || snake->pos.y==50 || snake->pos.x==0 || snake->pos.y==0)
+             if(snake->pos.x==49 || snake->pos.y==49 || snake->pos.x==0 || snake->pos.y==0)
              break;
+
         }
     }

@@ -10,3 +10,12 @@ void initSnake(){
         snake->prev.y=9;
 
 }
+int onFood(){
+    if(food==NULL)
+        return 0;
+    if(snake->pos.x ==food->pos.x && snake->pos.y==food->pos.y)
+        return 1;
+
+    return 0;
+
+}

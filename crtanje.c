@@ -72,11 +72,16 @@ void clean(){
 
 }
 void foodDraw(){
+    COORD pos;
+    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    for (int i = 0; i < 1024; i++)
-    {
+        if(food!= NULL){
+        pos.X=food->pos.x;
+        pos.Y=food->pos.y;
+        SetConsoleCursorPosition(console,pos);
 
-    }
+        putchar(food->c);
+        }
 
 
 }

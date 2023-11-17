@@ -14,22 +14,23 @@ typedef struct{
 }Position;
 typedef struct{
 
-   Position pos;
-   char c;
+    Position pos;
+    char c;
 
 }Food;
 typedef struct{
 
-   Position pos;
-   Position prev;
-   char c;
-   int size;
+    Position pos[2500];
+    Position prev;
+    char c;
+    int size;
 
 
 }Snake;
-extern  Food** food;
-void initFood();
+extern  Food* food;
 void initSnake();
+void foodDraw();
+int onFood();
 Food* createFood();
 void clean();
 void setup(void);
