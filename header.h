@@ -20,7 +20,7 @@ typedef struct{
 }Food;
 typedef struct{
 
-    Position pos[2500];
+    Position pos[1000];
     Position prev;
     char c;
     int size;
@@ -28,11 +28,11 @@ typedef struct{
 
 }Snake;
 extern  Food* food;
-void initSnake();
-void foodDraw();
-int onFood();
-Food* createFood();
-void clean();
+void initSnake(void);
+void foodDraw(void);
+int onFood(void);
+Food* createFood(void);
+void clean(void);
 void setup(void);
 void loop(void);
 void borderDraw(void);

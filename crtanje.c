@@ -45,14 +45,21 @@ void borderDraw(void){
 void snakeDraw(Snake* snake){
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD pos;
-    pos.X=snake->pos.x;
-    pos.Y=snake->pos.y;
-    SetConsoleCursorPosition(console,pos);
-    printf("%c",snake->c);
+
+
+    for(int i=0;i<=snake->size;i++){
+
+        pos.X=snake->pos[i].x;
+        pos.Y=snake->pos[i].y;
+        SetConsoleCursorPosition(console,pos);
+        printf("%c",snake->c);
+
+
+    }
 
 }
 //cleaning
-void clean(){
+void clean(void){
 
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD pos;
@@ -71,7 +78,7 @@ void clean(){
 
 
 }
-void foodDraw(){
+void foodDraw(void){
     COORD pos;
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 
